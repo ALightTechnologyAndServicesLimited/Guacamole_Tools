@@ -7,3 +7,6 @@
 Download the code, compile and run! Interactive Console based tool.
 
 For now, have no plans of adding features for managing users / connections.
+
+Blog: https://blog.alightservices.com/
+Website: https://www.alightservices.com/
