@@ -53,7 +53,7 @@ void UpdatePasswordInMySQLScript()
         string sha256 = GenerateSHA256(password, salt);
 
         content = content.Replace("FE24ADC5E11E2B25288D1704ABE67A79E342ECC26064CE69C5B3177795A82264", salt)
-            .Replace("CA458A7D494E3BE824F5E1E175A1556C0F8EEF2C2D7DF3633BEC4A29C4411960", password);
+            .Replace("CA458A7D494E3BE824F5E1E175A1556C0F8EEF2C2D7DF3633BEC4A29C4411960", sha256);
         WriteToFile(path, content);
     }
     else
@@ -155,7 +155,6 @@ void SetOrUpdateProperty(string? filePath, string? key, string? value)
     var lines = content.Split('\n', StringSplitOptions.RemoveEmptyEntries);
     var sb = new StringBuilder();
     var isKeyFound = false;
-
     foreach (var line in lines)
     {
         if (line.Trim().StartsWith(key))
@@ -164,7 +163,7 @@ void SetOrUpdateProperty(string? filePath, string? key, string? value)
             isKeyFound = true;
         }
         else
-            sb.AppendLine();
+            sb.AppendLine(line);
     }
     if (!isKeyFound) sb.AppendLine($"{key}: {value}");
 
@@ -186,6 +185,7 @@ bool ValidateFileExistsAndWriteable(string? filePath)
     try
     {
         sw.Write("");
+        sw.Close();
     }
     catch (Exception ex)
     {
