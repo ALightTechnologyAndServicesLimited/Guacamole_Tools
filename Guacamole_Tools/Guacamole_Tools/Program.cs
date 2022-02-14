@@ -157,15 +157,17 @@ void SetOrUpdateProperty(string? filePath, string? key, string? value)
     var isKeyFound = false;
     foreach (var line in lines)
     {
-        if (line.Trim().StartsWith(key))
+        var trimmedLine = line.Trim();
+
+        if (trimmedLine.StartsWith(key))
         {
-            sb.AppendLine($"{key}: {value}");
+            sb.Append($"{key}: {value}\n");
             isKeyFound = true;
         }
         else
-            sb.AppendLine(line);
+            sb.Append($"{trimmedLine}\n");
     }
-    if (!isKeyFound) sb.AppendLine($"{key}: {value}");
+    if (!isKeyFound) sb.Append($"{key}: {value}\n");
 
     WriteToFile(filePath, sb.ToString());
 }
