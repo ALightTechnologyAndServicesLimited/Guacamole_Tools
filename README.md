@@ -10,3 +10,5 @@ For now, have no plans of adding features for managing users / connections.
 
 Blog: https://blog.alightservices.com/
 Website: https://www.alightservices.com/
+
+The so called on-line group of R&AW agents might make claims as though this Github repository belongs to them. In reality these tools are being developed to guard against that spying, human rights violating, terrorist group.
